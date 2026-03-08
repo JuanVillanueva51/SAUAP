@@ -10,7 +10,7 @@
     <!-- Declaración manual de entidades -->
     <class>mx.desarrollo.sauap.entity.Asignacion</class>
     <class>mx.desarrollo.sauap.entity.AsignacionId</class>
-    <class>mx.desarrollo.sauap.entity.Profesore</class>
+    <class>mx.desarrollo.sauap.entity.Profesores</class>
     <class>mx.desarrollo.sauap.entity.UnidadAprendizaje</class>
     <class>mx.desarrollo.sauap.entity.Usuario</class>
 

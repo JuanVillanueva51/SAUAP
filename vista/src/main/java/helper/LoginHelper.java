@@ -8,5 +8,13 @@ package helper;
 import java.io.Serializable;
 
 public class LoginHelper implements Serializable {
+    
 
+    /**
+     * Metodo para hacer login llamara a la instancia de usuarioFacade
+     * @param correo
+     * @param password
+     * @return 
+     */
+    
 }
