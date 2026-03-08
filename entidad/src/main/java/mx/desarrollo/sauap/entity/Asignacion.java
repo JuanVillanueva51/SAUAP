@@ -19,8 +19,7 @@ public class Asignacion {
     @JoinColumn(name = "idprofesor")
     private Profesores idprofesor;
 
-    @Lob
-    @Column(name = "dia")
+    @Column(name = "dia", length = 20)
     private String dia;
 
     @Column(name = "hora_inicio")
@@ -29,8 +28,7 @@ public class Asignacion {
     @Column(name = "hora_fin")
     private LocalTime horaFin;
 
-    @Lob
-    @Column(name = "tipo_hora")
+    @Column(name = "tipo_hora", length = 20)
     private String tipoHora;
 
     public AsignacionId getId() {

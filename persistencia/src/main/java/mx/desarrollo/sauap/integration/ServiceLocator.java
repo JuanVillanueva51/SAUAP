@@ -16,8 +16,17 @@ import mx.desarrollo.sauap.persistence.HibernateUtil;
  */
 public class ServiceLocator {
 
+    private static ProfesorDAO profesorDAO;
     private static EntityManager getEntityManager(){
         return HibernateUtil.getEntityManager();
     }
 
+    public static ProfesorDAO getInstanceProfesorDAO(){
+        if(profesorDAO == null){
+            profesorDAO = new ProfesorDAO(getEntityManager());
+            return profesorDAO;
+        } else{
+            return profesorDAO;
+        }
+    }
 }

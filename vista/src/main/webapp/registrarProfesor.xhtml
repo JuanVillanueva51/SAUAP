@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Registrar profesor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1f1f1f;
+            font-family: Brawler;
+        }
+
+        .page-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .registro-card {
+            width: 650px;
+            max-width: 95%;
+            background: #f7f7f7;
+            border-radius: 22px;
+            padding: 28px 22px 26px 22px;
+            box-sizing: border-box;
+        }
+
+        .titulo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #111111;
+            margin-bottom: 26px;
+        }
+
+        .campo-bloque {
+            margin-bottom: 22px;
+        }
+
+        .campo-label {
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+            color: #111111;
+            margin-bottom: 10px;
+        }
+
+        .input-profesor {
+            width: 100%;
+            height: 54px;
+            border-radius: 14px !important;
+            border: none !important;
+            background: #e9e7e7 !important;
+            box-shadow: none !important;
+            color: #222 !important;
+            font-size: 16px !important;
+            padding-left: 18px !important;
+            box-sizing: border-box;
+        }
+
+        .input-profesor::placeholder {
+            color: #CBC9C9 !important;
+            font-weight: 600;
+        }
+
+        .boton-contenedor {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .btn-registrar {
+            width: 82%;
+            height: 46px;
+            border-radius: 14px !important;
+            border: none !important;
+            background: #000000 !important;
+            color: white !important;
+            font-size: 18px !important;
+            font-weight: bold !important;
+            box-shadow: none !important;
+        }
+
+        .btn-registrar:hover {
+            opacity: 0.92;
+        }
+
+        .mensajes {
+            margin-bottom: 18px;
+        }
+
+        .ui-inputfield:focus,
+        .ui-inputfield.ui-state-focus {
+            box-shadow: none !important;
+            outline: none !important;
+            border: none !important;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="page-container">
+        <h:form style="width: 100%; display: flex; justify-content: center;">
+            <div class="registro-card">
+                <div class="titulo">Registrar profesor</div>
+
+                <p:messages id="messages" showDetail="true" closable="true" class="mensajes" />
+
+                <div class="campo-bloque">
+                    <label class="campo-label">Nombre:</label>
+                    <p:inputText
+                            styleClass="input-profesor"
+                            placeholder="Ingrese el nombre"
+                            value="#{registroProfesorUI.profesor.nombre}" />
+                </div>
+
+                <div class="campo-bloque">
+                    <label class="campo-label">Apellido Paterno:</label>
+                    <p:inputText
+                            styleClass="input-profesor"
+                            placeholder="Ingrese el apellido paterno"
+                            value="#{registroProfesorUI.profesor.apellidoPaterno}" />
+                </div>
+
+                <div class="campo-bloque">
+                    <label class="campo-label">Apellido Materno:</label>
+                    <p:inputText
+                            styleClass="input-profesor"
+                            placeholder="Ingrese el apellido materno"
+                            value="#{registroProfesorUI.profesor.apellidoMaterno}" />
+                </div>
+
+                <div class="campo-bloque">
+                    <label class="campo-label">RFC:</label>
+                    <p:inputText
+                            styleClass="input-profesor"
+                            placeholder="Ingrese el RFC"
+                            value="#{registroProfesorUI.profesor.rfc}" />
+                </div>
+
+                <div class="boton-contenedor">
+                    <p:commandButton
+                            value="Registrar profesor"
+                            action="#{registroProfesorUI.registrarProfesor}"
+                            update="messages @form"
+                            styleClass="btn-registrar" />
+                </div>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>
