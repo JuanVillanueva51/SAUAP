@@ -17,7 +17,7 @@ public class Asignacion {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idprofesor")
-    private Profesore idprofesor;
+    private Profesores idprofesor;
 
     @Lob
     @Column(name = "dia")
@@ -49,11 +49,11 @@ public class Asignacion {
         this.idunidad = idunidad;
     }
 
-    public Profesore getIdprofesor() {
+    public Profesores getIdprofesor() {
         return idprofesor;
     }
 
-    public void setIdprofesor(Profesore idprofesor) {
+    public void setIdprofesor(Profesores idprofesor) {
         this.idprofesor = idprofesor;
     }
 
