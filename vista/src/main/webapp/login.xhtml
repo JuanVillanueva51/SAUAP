@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Iniciar sesión</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1f1f1f;
+            font-family: Boulder;
+        }
+
+        .contenedor-login {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tarjeta-login {
+            width: 650px;
+            background: #f3f3f3;
+            border-radius: 22px;
+            padding: 28px 28px 40px 28px;
+            box-sizing: border-box;
+        }
+
+        .titulo-login {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 35px;
+            color: #111111;
+        }
+
+        .campo-bloque {
+            margin-bottom: 22px;
+        }
+
+        .etiqueta-login {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            color: #111111;
+            margin-bottom: 10px;
+        }
+
+        .input-login,
+        .password-login {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .input-login input,
+        .password-login input {
+            width: 100%;
+            box-sizing: border-box;
+            border: none !important;
+            outline: none !important;
+            border-radius: 16px !important;
+            background: #dddddd !important;
+            padding: 16px 18px !important;
+            font-size: 18px !important;
+            color: #333333 !important;
+            box-shadow: none !important;
+        }
+
+        .input-login input::placeholder,
+        .password-login input::placeholder {
+            color: #9a9a9a;
+            font-weight: 600;
+        }
+
+        .espacio-boton {
+            margin-top: 65px;
+            text-align: center;
+        }
+
+        .boton-login {
+            width: 82%;
+            background: #000000 !important;
+            border: none !important;
+            border-radius: 16px !important;
+            color: white !important;
+            font-size: 18px !important;
+            font-weight: bold !important;
+            padding: 16px 0 !important;
+        }
+
+        .boton-login:hover {
+            background: #111111 !important;
+        }
+
+        .mensajes-login {
+            margin-bottom: 18px;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="contenedor-login">
+        <div class="tarjeta-login">
+            <h:form id="formLogin">
+                <p:growl id="mensajes" showDetail="true" life="3000" class="mensajes-login" />
+
+                <div class="titulo-login">Iniciar sesion</div>
+
+                <div class="campo-bloque">
+                    <p:outputLabel for="usuario" value="Usuario:" styleClass="etiqueta-login" />
+                    <p:inputText id="usuario"
+                                 value="#{loginUI.usuario}"
+                                 required="true"
+                                 requiredMessage="El usuario es obligatorio"
+                                 placeholder="Ingrese el nombre de usuario"
+                                 styleClass="input-login" />
+                </div>
+
+                <div class="campo-bloque">
+                    <p:outputLabel for="contrasena" value="Contraseña:" styleClass="etiqueta-login" />
+                    <p:password id="contrasena"
+                                value="#{loginUI.contrasena}"
+                                required="true"
+                                requiredMessage="La contraseña es obligatoria"
+                                placeholder="Ingrese la contraseña"
+                                feedback="false"
+                                styleClass="password-login" />
+                </div>
+
+                <div class="espacio-boton">
+                    <p:commandButton value="Iniciar sesion"
+                                     action="#{loginUI.iniciarSesion}"
+                                     ajax="false"
+                                     styleClass="boton-login" />
+                </div>
+            </h:form>
+        </div>
+    </div>
+</h:body>
+</html>
+

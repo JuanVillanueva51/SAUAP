@@ -19,17 +19,30 @@ public class Asignacion {
     @JoinColumn(name = "idprofesor")
     private Profesores idprofesor;
 
-    @Column(name = "dia", length = 20)
-    private String dia;
-
+    @Enumerated(EnumType.STRING)
+    @Column(name = "dia")
+    private DiaSemana dia;
+    public enum DiaSemana {
+        LUNES,
+        MARTES,
+        MIERCOLES,
+        JUEVES,
+        VIERNES
+    }
     @Column(name = "hora_inicio")
     private LocalTime horaInicio;
 
     @Column(name = "hora_fin")
     private LocalTime horaFin;
 
-    @Column(name = "tipo_hora", length = 20)
-    private String tipoHora;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_hora")
+    private TipoHora tipoHora;
+    public enum TipoHora {
+        CLASE,
+        TALLER,
+        LABORATORIO
+    }
 
     public AsignacionId getId() {
         return id;
@@ -55,11 +68,11 @@ public class Asignacion {
         this.idprofesor = idprofesor;
     }
 
-    public String getDia() {
+    public DiaSemana getDia() {
         return dia;
     }
 
-    public void setDia(String dia) {
+    public void setDia(DiaSemana dia) {
         this.dia = dia;
     }
 
@@ -79,11 +92,11 @@ public class Asignacion {
         this.horaFin = horaFin;
     }
 
-    public String getTipoHora() {
+    public TipoHora getTipoHora() {
         return tipoHora;
     }
 
-    public void setTipoHora(String tipoHora) {
+    public void setTipoHora(TipoHora tipoHora) {
         this.tipoHora = tipoHora;
     }
 
