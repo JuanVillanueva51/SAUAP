@@ -1,6 +1,5 @@
 package ui;
 
-import helper.LoginHelper;
 import helper.asignarUnidadesHelper;
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
