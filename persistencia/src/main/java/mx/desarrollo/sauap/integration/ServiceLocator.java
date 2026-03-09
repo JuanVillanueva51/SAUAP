@@ -16,8 +16,16 @@ import mx.desarrollo.sauap.persistence.HibernateUtil;
  */
 public class ServiceLocator {
 
+    private static AsignacionDAO asignacionDAO;
     private static EntityManager getEntityManager(){
         return HibernateUtil.getEntityManager();
     }
-
+    public static AsignacionDAO getInstanceAsignacionDAO(){
+        if(asignacionDAO == null){
+            asignacionDAO = new AsignacionDAO(getEntityManager());
+            return asignacionDAO;
+        } else{
+            return asignacionDAO;
+        }
+    }
 }

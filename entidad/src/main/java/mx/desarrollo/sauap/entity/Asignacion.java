@@ -7,10 +7,11 @@ import java.time.LocalTime;
 @Entity
 @Table(name = "asignacion")
 public class Asignacion {
-    @EmbeddedId
-    private AsignacionId id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idasignacion", nullable = false)
+    private Integer id;
 
-    @MapsId("idunidad")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "idunidad", nullable = false)
     private UnidadAprendizaje idunidad;
@@ -19,9 +20,9 @@ public class Asignacion {
     @JoinColumn(name = "idprofesor")
     private Profesores idprofesor;
 
-    @Lob
-    @Column(name = "dia")
-    private String dia;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "dia", nullable = false)
+    private Dia dia;
 
     @Column(name = "hora_inicio")
     private LocalTime horaInicio;
@@ -29,15 +30,30 @@ public class Asignacion {
     @Column(name = "hora_fin")
     private LocalTime horaFin;
 
-    @Lob
-    @Column(name = "tipo_hora")
-    private String tipoHora;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_hora", nullable = false)
+    private TipoHora tipoHora;
 
-    public AsignacionId getId() {
+    public enum Dia {
+        LUNES,
+        MARTES,
+        MIERCOLES,
+        JUEVES,
+        VIERNES,
+        SABADO
+    }
+
+    public enum TipoHora {
+        CLASE,
+        TALLER,
+        LABORATORIO
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(AsignacionId id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -57,11 +73,9 @@ public class Asignacion {
         this.idprofesor = idprofesor;
     }
 
-    public String getDia() {
-        return dia;
-    }
+    public Dia getDia() {return dia;}
 
-    public void setDia(String dia) {
+    public void setDia(Dia dia) {
         this.dia = dia;
     }
 
@@ -81,11 +95,11 @@ public class Asignacion {
         this.horaFin = horaFin;
     }
 
-    public String getTipoHora() {
+    public TipoHora getTipoHora() {
         return tipoHora;
     }
 
-    public void setTipoHora(String tipoHora) {
+    public void setTipoHora(TipoHora tipoHora) {
         this.tipoHora = tipoHora;
     }
 

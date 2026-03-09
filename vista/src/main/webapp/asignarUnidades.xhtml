@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Asignación de unidades de aprendizaje</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1f1f1f;
+            font-family: Brawler;
+        }
+
+        .page-container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            box-sizing: border-box;
+        }
+
+        .registro-card {
+            width: 850px;
+            max-width: 95%;
+            background: #f7f7f7;
+            border-radius: 22px;
+            padding: 28px 22px 26px 22px;
+            box-sizing: border-box;
+        }
+
+        .ui-selectonemenu-trigger {
+            background: #000000 !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .titulo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #111111;
+            margin-bottom: 26px;
+            text-align: center;
+        }
+
+        .campo-bloque {
+            margin-bottom: 22px;
+        }
+
+        .fila-campos {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        .campo-columna {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .campo-label {
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+            color: #111111;
+            margin-bottom: 10px;
+        }
+
+        .input-profesor {
+            width: 100%;
+            height: 54px;
+            border-radius: 14px !important;
+            border: none !important;
+            background: #e9e7e7 !important;
+            box-shadow: none !important;
+            color: #222 !important;
+            font-size: 16px !important;
+            padding-left: 12px !important;
+            box-sizing: border-box;
+        }
+
+        .boton-contenedor {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn-registrar {
+            width: 82%;
+            height: 52px;
+            border-radius: 14px !important;
+            border: none !important;
+            background: #000000 !important;
+            color: white !important;
+            font-size: 22px !important;
+            font-weight: bold !important;
+            box-shadow: none !important;
+        }
+
+        .btn-registrar:hover {
+            opacity: 0.92;
+        }
+
+        .mensajes {
+            margin-bottom: 18px;
+        }
+
+        .ui-inputfield:focus,
+        .ui-inputfield.ui-state-focus {
+            box-shadow: none !important;
+            outline: none !important;
+            border: none !important;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="page-container">
+        <h:form style="width: 100%; display: flex; justify-content: center;">
+            <div class="registro-card">
+                <div class="titulo">Asignación de unidades de aprendizaje</div>
+
+                <p:messages id="messages" showDetail="true" closable="true" class="mensajes" />
+
+                <div class="campo-bloque">
+                    <label class="campo-label">Profesor</label>
+                    <p:selectOneMenu value="#{asignarUnidadesUI.idProfesorSeleccionado}" styleClass="input-profesor">
+                        <f:selectItem itemLabel="Seleccione un profesor" itemValue="#{null}" noSelectionOption="true" />
+                        <f:selectItems value="#{asignarUnidadesUI.profesores}"
+                                       var="prof"
+                                       itemValue="#{prof.id}"
+                                       itemLabel="#{prof.nombre} #{prof.apellidoPaterno} #{prof.apellidoMaterno}" />
+                    </p:selectOneMenu>
+                </div>
+
+                <div class="fila-campos">
+                    <div class="campo-columna">
+                        <label class="campo-label">Unidad de aprendizaje</label>
+                        <p:selectOneMenu value="#{asignarUnidadesUI.idUnidadSeleccionada}" styleClass="input-profesor">
+                            <f:selectItem itemLabel="Seleccione una unidad" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{asignarUnidadesUI.unidades}"
+                                           var="uni"
+                                           itemValue="#{uni.id}"
+                                           itemLabel="#{uni.nombre}" />
+                        </p:selectOneMenu>
+                    </div>
+
+                    <div class="campo-columna">
+                        <label class="campo-label">Tipo de Hora</label>
+                        <p:selectOneMenu value="#{asignarUnidadesUI.asignacion.tipoHora}" styleClass="input-profesor">
+                            <f:selectItem itemLabel="Seleccione un tipo" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{asignarUnidadesUI.tipoHora}"
+                                           var="tipo"
+                                           itemValue="#{tipo}"
+                                           itemLabel="#{tipo}" />
+                        </p:selectOneMenu>
+                    </div>
+
+                    <div class="campo-columna">
+                        <label class="campo-label">Día</label>
+                        <p:selectOneMenu value="#{asignarUnidadesUI.asignacion.dia}" styleClass="input-profesor">
+                            <f:selectItem itemLabel="Seleccione un dia" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{asignarUnidadesUI.dias}"
+                                           var="dia"
+                                           itemValue="#{dia}"
+                                           itemLabel="#{dia}" />
+                        </p:selectOneMenu>
+                    </div>
+                </div>
+
+                <div class="fila-campos">
+                    <div class="campo-columna">
+                        <label class="campo-label">Hora de inicio</label>
+                        <p:selectOneMenu value="#{asignarUnidadesUI.horaInicioSeleccionada}" styleClass="input-profesor">
+                            <f:selectItem itemLabel="Seleccione una hora" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{asignarUnidadesUI.horasDisponibles}"
+                                           var="horaIni"
+                                           itemValue="#{horaIni}"
+                                           itemLabel="#{horaIni}" />
+                        </p:selectOneMenu>
+                    </div>
+
+                    <div class="campo-columna">
+                        <label class="campo-label">Hora de fin</label>
+                        <p:selectOneMenu value="#{asignarUnidadesUI.horaFinSeleccionada}" styleClass="input-profesor">
+                            <f:selectItem itemLabel="Seleccione una hora" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{asignarUnidadesUI.horasDisponibles}"
+                                           var="horaFin"
+                                           itemValue="#{horaFin}"
+                                           itemLabel="#{horaFin}" />
+                        </p:selectOneMenu>
+                    </div>
+                </div>
+
+                <div class="boton-contenedor">
+                    <p:commandButton
+                            value="Realizar asignacion"
+                            action="#{asignarUnidadesUI.asignarUnidades}"
+                            update="messages @form"
+                            styleClass="btn-registrar" />
+                </div>
+            </div>
+        </h:form>
+    </div>
+</h:body>
+</html>

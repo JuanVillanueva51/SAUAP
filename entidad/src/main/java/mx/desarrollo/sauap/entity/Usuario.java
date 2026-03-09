@@ -16,8 +16,8 @@ public class Usuario {
     private String nombreUsuario;
 
     @Size(max = 50)
-    @Column(name = "`contraseña`", length = 50)
-    private String contraseña;
+    @Column(name = "`contrasena`", length = 50)
+    private String contrasena;
 
     public Integer getId() {
         return id;
@@ -35,12 +35,12 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
 }
