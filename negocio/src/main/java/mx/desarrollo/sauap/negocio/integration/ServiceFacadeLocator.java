@@ -1,11 +1,23 @@
 package mx.desarrollo.sauap.negocio.integration;
 
 
+import mx.desarrollo.sauap.negocio.facade.AsignacionFacade;
+
 import mx.desarrollo.sauap.negocio.delegate.UsuarioDelegate;
 import mx.desarrollo.sauap.negocio.facade.ProfesorFacade;
 
 public class ServiceFacadeLocator {
 
+    private static AsignacionFacade asignacionFacade;
+
+    public static AsignacionFacade getInstanceAsignacionFacade() {
+        if (asignacionFacade == null) {
+            asignacionFacade = new AsignacionFacade();
+            return asignacionFacade;
+        } else {
+            return asignacionFacade;
+        }
+    }
     private static ProfesorFacade profesorFacade;
     private static UsuarioDelegate usuarioDelegate;
 
